@@ -1,0 +1,51 @@
+body{
+    background:url(bmw.jpg) ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+    
+}
+
+
+img{
+    width: 220px;
+    height: 220px;
+    
+}
+p{
+    text-align: center;
+}
+
+div{
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    border: 3px solid red;
+    padding: 25px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+    
+div div{
+    border: 5px solid yellow;
+    border-right: hidden;
+    border-top: hidden;
+    padding: 0;
+    margin: -5px;
+    border-radius: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
