@@ -1,0 +1,71 @@
+#div1{
+    border: 2px solid black;
+    width: 80%;
+    height: 350px;
+    margin: 0 auto;
+    background-color: rgb(48, 195, 244);
+    position: relative;
+    
+    
+}
+
+    #p1{
+        color: white;
+        font-size: large;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 90px;   
+       
+    }
+
+    #p2{
+        color: white;
+        font-size: large;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 0px;   
+       
+    }
+
+    #p3{
+        color: white;
+        font-size: 35pt;
+        text-align: center;
+        position: absolute;
+        top: 170px;
+        right: 400px;
+    }
+    #animated-background {
+        position: relative; 
+        width: 100%; 
+        height: 100%; 
+        overflow: hidden; 
+      }
+      
+      .square {
+        position: absolute; 
+        width: 50px; 
+        height: 50px; 
+        background-color: #ffffff; 
+        border: 1px solid black; 
+        transform: rotate(45deg);
+      }
+      
+      
+      @keyframes animate-squares {
+          from { top: 100%; }
+          to { top: -100%; }
+        }
+    
+        .square {
+            animation: animate-squares 4s linear infinite;
+          }
+          
+          
+          #animate-button:hover {
+            cursor: pointer; 
+            background-color: #000000; 
+            color: #ffffff; 
+          }
