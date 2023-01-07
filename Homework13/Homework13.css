@@ -60,7 +60,8 @@
         }
     
         .square {
-            animation: animate-squares 4s linear infinite;
+            animation: animate-squares 6s linear infinite;
+            transform-origin: 50% 50%;
           }
           
           
@@ -69,3 +70,22 @@
             background-color: #000000; 
             color: #ffffff; 
           }
+
+          
+         
+            
+          
+          
+          
+          
+          
+          
+          
+      
+          
+          
+          
+          
+            
+            
+         

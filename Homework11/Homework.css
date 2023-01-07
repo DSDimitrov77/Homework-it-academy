@@ -87,3 +87,7 @@ hr{
   background-color: lightgreen;
   width: 500px;
 }
+
+body:hover {
+  transform: translate(12rem,15rem) scale(2) rotate(50deg);
+}
