@@ -1,0 +1,96 @@
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+@media  screen and (max-width:600px ){
+    .grid-container{
+        background-color: lightblue;
+    }
+    
+} 
+ @media  screen and (min-width:601px) and (max-width:1023px){
+.grid-container{
+    background-color: lime;
+   
+    border: 5px solid;
+    border-color: lightgreen ;
+
+}
+}
+@media  screen and (min-width:1024px){
+    .grid-container{
+       
+        column-gap: 10px;
+        background-color: red;
+        
+        
+    }
+  
+}
+
+@media screen and (max-width:600px){
+    body{
+        background-color: blue;
+        
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:1023px){
+    body{
+        background-color: green ;
+    }
+}
+@media screen and (min-width:1024px){
+    body{
+        background-color: red;
+    }
+}
+
+@media screen and (max-width:600px){
+    .grid-container{
+        gap: none;
+        grid-template-areas: 
+        'header header header header header header'
+         'menu menu menu menu menu menu '
+       'main main main main main right'
+       'footer footer footer footer footer footer';;
+       grid-template-rows:11rem 11rem 11rem 11rem  ;
+    }
+}
+
+@media screen and (min-width:601px) and  (max-width:1023px){
+    .grid-container{
+        gap: none;
+        grid-template-areas: 
+        'menu header header header header header'
+         'menu footer footer footer footer footer '
+       'menu footer footer footer footer footer'
+       'menu main main main right right';;
+       grid-template-rows:9rem 4rem 4rem 9rem  ;
+       
+    }
+
+}
+
+
+        
