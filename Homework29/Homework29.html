@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Click Counter Game</title>
+	<script type="text/javascript">
+		var timeLeft = 0;
+		var clickCount = 0;
+		var timerId = null;
+
+		function startTimer() {
+			var inputElem = document.getElementById('time-input');
+			var time = parseInt(inputElem.value);
+
+			if (isNaN(time) || time < 1 || time > 5) {
+				alert('Invalid time value. Please enter a value between 1 and 5 minutes.');
+				return;
+			}
+
+			timeLeft = time * 60;
+			clickCount = 0;
+			updateClickCount();
+
+			timerId = setInterval(function() {
+				timeLeft--;
+				updateTimer();
+
+				if (timeLeft == 0) {
+					clearInterval(timerId);
+					showScore();
+				}
+			}, 1000);
+		}
+
+		function updateTimer() {
+			var timerElem = document.getElementById('timer');
+			var minutes = Math.floor(timeLeft / 60);
+			var seconds = timeLeft % 60;
+			timerElem.innerHTML = 'Time left: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+		}
+
+		function updateClickCount() {
+			var clickCountElem = document.getElementById('click-count');
+			clickCountElem.innerHTML = 'Click count: ' + clickCount;
+		}
+
+		function showScore() {
+			alert('Your score is: ' + clickCount);
+		}
+
+		document.addEventListener('click', function(event) {
+			if (event.button == 0) {
+				clickCount++;
+				updateClickCount();
+			}
+		});
+
+	
+		var people = [];
+
+		
+		people.push({
+			name: "John Smith",
+			age: 25,
+			telephone: "0881234567",
+			email: "john@superhosting.bg"
+		});
+		people.push({
+			name: "Jane Doe",
+			age: 30,
+			telephone: "0782345678",
+			email: "jane@superhosting.bg"
+		});
+
+		
+		function addPerson() {
+			
+			var nameInput = document.getElementById("name");
+			var ageInput = document.getElementById("age");
+			var telephoneInput = document.getElementById("telephone");
+			var emailInput = document.getElementById("email");
+
+			
+			var telephonePattern = /^(088|078|098)\d{7}$/;
+			if (!telephonePattern.test(telephoneInput.value)) {
+				alert("Invalid telephone number. Please enter a number starting with 088, 078 or 098, followed by 7 digits.");
+				return;
+			}
+
+			
+			var emailPattern = /.+@superhosting.bg/;
+			if (!emailPattern.test(emailInput.value)) {
+				alert("Invalid email address. Please enter an email address containing '@superhosting.bg'");
+
+            }
+        }
+	</script>
+	<style type="text/css">
+		#timer {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		#click-count {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 48px;
+			text-align: center;
+		}
+
+        table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px;}
+	</style>
+</head>
+<body>
+	<label for="time-input">Enter the game time (in minutes):</label>
+	<input type="number" id="time-input" min="1" max="5" value="1">
+	<button onclick="startTimer()">Start Game</button>
+	<div id="timer"></div>
+	<div id="click-count">Click count: 0</div>
+
+    <h1>People List</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Telephone</th>
+				<th>Email</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody id="people-list">
+			<!-- people will be added here dynamically -->
+		</tbody>
+	</table>
+
+	<h2>Add Person</h2>
+	<form onsubmit="addPerson(); return false;">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="age">Age:</label>
+		<input type="number" id="age" name="age" required>
+
+		<label for="telephone">Telephone:</label>
+		<input type="tel" id="telephone" name="telephone" pattern="088|078|098[0-9]{7}" required>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" pattern=".+@superhosting.bg" required>
+
+		<button type="submit">Add</button>
+	</form>
+
+	<h2>Delete Person</h2>
+	<form onsubmit="deletePerson(); return false;">
+		<label for="delete-name">Name:</label>
+		<input type="text" id="delete-name" name="name" required>
+		<button type="submit">Delete</button>
+	</form>
+
+</body>
+</html>

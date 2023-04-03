@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Click Counter Game</title>
+	<script type="text/javascript">
+		var timeLeft = 0;
+		var clickCount = 0;
+		var timerId = null;
+
+		function startTimer() {
+			var inputElem = document.getElementById('time-input');
+			var time = parseInt(inputElem.value);
+
+			if (isNaN(time) || time < 1 || time > 5) {
+				alert('Invalid time value. Please enter a value between 1 and 5 minutes.');
+				return;
+			}
+
+			timeLeft = time * 60;
+			clickCount = 0;
+			updateClickCount();
+
+			timerId = setInterval(function() {
+				timeLeft--;
+				updateTimer();
+
+				if (timeLeft == 0) {
+					clearInterval(timerId);
+					showScore();
+				}
+			}, 1000);
+		}
+
+		function updateTimer() {
+			var timerElem = document.getElementById('timer');
+			var minutes = Math.floor(timeLeft / 60);
+			var seconds = timeLeft % 60;
+			timerElem.innerHTML = 'Time left: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+		}
+
+		function updateClickCount() {
+			var clickCountElem = document.getElementById('click-count');
+			clickCountElem.innerHTML = 'Click count: ' + clickCount;
+		}
+
+		function showScore() {
+			alert('Your score is: ' + clickCount);
+		}
+
+		document.addEventListener('click', function(event) {
+			if (event.button == 0) {
+				clickCount++;
+				updateClickCount();
+			}
+		});
+	</script>
+	<style type="text/css">
+		#timer {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		#click-count {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 48px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<label for="time-input">Enter the game time (in minutes):</label>
+	<input type="number" id="time-input" min="1" max="5" value="1">
+	<button onclick="startTimer()">Start Game</button>
+	<div id="timer"></div>
+	<div id="click-count">Click count: 0</div>
+</body>
+</html>
